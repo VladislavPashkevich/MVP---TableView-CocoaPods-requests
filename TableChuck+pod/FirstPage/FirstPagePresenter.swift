@@ -26,20 +26,22 @@ class FirstPagePresenter: FirstPagePresenterProtocol {
     weak var view: FirstPageViewProtocol?
     
     private var categoriesNow: [Categories] = []
-        
+    
     func viewDidLoad() {
-            saveCoreData()
+        saveCoreData()
     }
     
     func saveCoreData() {
-        //из базы данных закинуть в массив
-//        DatabaseService.shared.entitiesFor(
-//            type: Categories.self,
-//            context: DatabaseService.shared.persistentContainer.mainContext,
-//            closure: { value in
-//                self.categoriesNow.append(contentsOf: value)
-//        }
-//        )
+        //        из базы данных закинуть в массив
+        DatabaseService.shared.entitiesFor(
+            type: Categories.self,
+            context: DatabaseService.shared.persistentContainer.mainContext,
+            closure: { value in
+                self.categoriesNow = value
+            }
+        )
+        
+        print(categoriesNow)
         if categoriesNow.count == 0 {
             self.view?.activeMBProgressHUD()
             guard let url = URL(string: "https://api.chucknorris.io/jokes/categories") else {
@@ -65,13 +67,13 @@ class FirstPagePresenter: FirstPagePresenterProtocol {
                                 print(self.categoriesNow)
                                 self.view?.reloadData()
                                 self.view?.deactiveMBProgressHUD()
-                        }
-                    )
-        //в CoreData хранится не массив а элементы --- а получаем из CoreData массив
+                            }
+                        )
+                        //в CoreData хранится не массив а элементы --- а получаем из CoreData массив
                     }
                     
                 case .failure(let err):
-                self.view?.showAlert(message: err.localizedDescription)
+                    self.view?.showAlert(message: err.localizedDescription)
                 }
             }
         } else {

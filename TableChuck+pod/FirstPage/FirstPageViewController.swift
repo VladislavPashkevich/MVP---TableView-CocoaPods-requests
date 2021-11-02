@@ -29,6 +29,9 @@ class FirstPageViewController: UIViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "Экран категории"
+
 
         presenter.view = self
         presenter.viewDidLoad()

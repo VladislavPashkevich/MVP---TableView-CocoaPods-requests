@@ -49,7 +49,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lmp-iT-IUG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGi-aU-k0Y">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" id="JGi-aU-k0Y">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

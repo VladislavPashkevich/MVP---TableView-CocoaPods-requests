@@ -34,7 +34,9 @@ class SecondPageViewController: UIViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.title = "Экран шутки"
+        
         presenter.view = self
         presenter.viewDidLoad()
     }
